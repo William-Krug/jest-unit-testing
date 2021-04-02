@@ -18,37 +18,22 @@ function fizzBuzz(number) {
     throw new Error(`No argument passed. Please enter a number.`);
   }
 
-  // Check if a string was passed
-  if (typeof number === 'string') {
-    // If the string is a number (eg. '45')
-    if (typeof Number(number) === 'number') {
-      if (Number(number) % 15 === 0) {
-        return 'FizzBuzz';
-      } else if (Number(number) % 5 === 0) {
-        return 'Buzz';
-      } else if (Number(number) % 3 === 0) {
-        return 'Fizz';
-      } else {
-        return Number(number);
-      }
-    }
+  const convertedNumber = Number(number);
 
-    if (typeof Number(number[0]) === 'number') {
-      throw new Error(`Invalid argument passed. Please enter a number.`);
-    }
-
-    // throw new Error(`Invalid argument passed. Please enter a number.`);
+  // If the string is a word (eg. 'happy')
+  if (isNaN(convertedNumber)) {
+    throw new Error(`Invalid argument passed. Please enter a number.`);
   }
 
   // Convert number as necessary
-  if (number % 15 === 0) {
+  if (Number(number) % 15 === 0) {
     return 'FizzBuzz';
-  } else if (number % 5 === 0) {
+  } else if (Number(number) % 5 === 0) {
     return 'Buzz';
-  } else if (number % 3 === 0) {
+  } else if (Number(number) % 3 === 0) {
     return 'Fizz';
   } else {
-    return number;
+    return Number(number);
   }
 }
 

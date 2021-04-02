@@ -12,29 +12,19 @@ function isLeapYear(year) {
     throw new Error(`No argument passed. Please enter a year`);
   }
 
-  // Check if a string was passed
-  if (typeof year === 'string') {
-    if (typeof Number(year) === 'number') {
-      if (Number(year) % 400 === 0) {
-        return true;
-      } else if (Number(year) % 100 === 0) {
-        return false;
-      } else if (Number(year) % 4 === 0) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      throw new Error(`Invalid argument passed. Please enter a year.`);
-    }
+  // If the string is a word (eg. 'happy')
+  const convertedYear = Number(year);
+
+  if (isNaN(convertedYear)) {
+    throw new Error(`Invalid argument passed. Please enter a year.`);
   }
 
   // Determine if leap year
-  if (year % 400 === 0) {
+  if (Number(year) % 400 === 0) {
     return true;
-  } else if (year % 100 === 0) {
+  } else if (Number(year) % 100 === 0) {
     return false;
-  } else if (year % 4 === 0) {
+  } else if (Number(year) % 4 === 0) {
     return true;
   } else {
     return false;
