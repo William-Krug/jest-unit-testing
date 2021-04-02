@@ -1,4 +1,3 @@
-const { TestScheduler } = require('@jest/core');
 const fizzBuzz = require('./fizzBuzz.js');
 
 describe('the fizzBuzz function', () => {
@@ -48,18 +47,18 @@ describe('the fizzBuzz function', () => {
     expect(result).toBe(77);
   });
 
+  test('should fail if given a letter character or string', () => {
+    expect(() => {
+      fizzBuzz('happy');
+    }).toThrow(`Invalid argument passed. Please enter a number.`);
+  });
+
   /*
     Missing Input Path
   */
   test('should fail if given no arguments', () => {
     expect(() => {
       fizzBuzz();
-    }).toThrow(`No argument passed.  Please enter a number.`);
-  });
-
-  test('should fail if given a letter character or string', () => {
-    expect(() => {
-      fizzBuzz('happy');
-    }).toThrow(`Invalid argument passed.  Please enter a number.`);
+    }).toThrow(`No argument passed. Please enter a number.`);
   });
 });
