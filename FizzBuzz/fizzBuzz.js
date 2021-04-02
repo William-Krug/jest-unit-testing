@@ -13,28 +13,37 @@
  * @param {number} number
  */
 function fizzBuzz(number) {
+  // Check for no passed arguments
   if (number === undefined) {
-    throw new Error(``);
+    throw new Error(`No argument passed.  Please enter a number.`);
   }
-  if (Number(number) % 15 === 0) {
+
+  // Check if a string was passed
+  if (typeof number === 'string') {
+    // If the string is a number (eg. '45')
+    if (Number(number) % 15 === 0) {
+      return 'FizzBuzz';
+    } else if (Number(number) % 5 === 0) {
+      return 'Buzz';
+    } else if (Number(number) % 3 === 0) {
+      return 'Fizz';
+    } else if (typeof Number(number) === 'number') {
+      return Number(number);
+    } else {
+      throw new Error(`Invalid argument passed.  Please enter a number.`);
+    }
+  }
+
+  // Convert number as necessary
+  if (number % 15 === 0) {
     return 'FizzBuzz';
-  } else if (Number(number) % 5 === 0) {
+  } else if (number % 5 === 0) {
     return 'Buzz';
-  } else if (Number(number) % 3 === 0) {
+  } else if (number % 3 === 0) {
     return 'Fizz';
   } else {
-    return Number(number);
+    return number;
   }
-  // switch (number) {
-  //   case Number(number) % 15 === 0:
-  //     return 'FizzBuzz';
-  //   case Number(number) % 5 === 0:
-  //     return 'Buzz';
-  //   case Number(number) % 3 === 0:
-  //     return 'Fizz';
-  //   default:
-  //     return Number(number);
-  // }
 }
 
 module.exports = fizzBuzz;
